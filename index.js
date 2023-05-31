@@ -32,7 +32,14 @@ export default function solution(content) {
 
     // 4 задание
   let forestPlants = data.filter(plant => plant[1].toLowerCase().includes('леса'))
-
+  const calcAverage = (years) => {
+    if(years.includes('-')) {
+      return (Number(years.split('-')[0])+Number(years.split('-')[1].split(' ')[0]))/2
+    } return  Number(years.split(' ')[0])
+  const forestYears = forestPlants.map(row => calcAverage(row[3]))
+  const ageTotal = forestYears.reduce((acc, elem) => acc + elem);
+  console.log(`Средний возраст для лесных растений ${Math.floor(ageTotal/forestYears.length)}.`);
+  };
   console.log(forestPlants)
   // END
 }
